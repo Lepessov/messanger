@@ -1,4 +1,5 @@
 from ast import operator
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
@@ -9,12 +10,22 @@ from .serializers import *
 # Create your views here.
 def getRoutes(request):
     routes = [
-        'http://0.0.0.0:8000/api/',
-        'http://0.0.0.0:8000/api/clients',
-        'http://0.0.0.0:8000/api/mails/<int:pk>',
-        'http://0.0.0.0:8000/api/mails/full',
-        'http://0.0.0.0:8000/api/messages',
+        'http://127.0.0.1:8000/api/',
+        'http://127.0.0.1:8000/api/clients',
+        'http://127.0.0.1:8000/api/mails/<int:pk>',
+        'http://127.0.0.1:8000/api/mails/full',
+        'http://127.0.0.1:8000/api/messages',
+
+        'http://127.0.0.1:8000/api/create/client/',
+        'http://127.0.0.1:8000/api/delete/client/<int:pk>',
+        'http://127.0.0.1:8000/api/update/client/<int:pk>',
+
+        'http://127.0.0.1:8000/api/create/api/mailing',
+        'http://127.0.0.1:8000/api/delete/api/mailing/<int:pk>',
+        'http://127.0.0.1:8000/api/update/mailing/<int:pk>',
     ]
+
+    return JsonResponse(routes, safe=False)
 
 @api_view(['POST'])
 def createClient(request):

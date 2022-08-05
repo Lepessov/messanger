@@ -3,6 +3,7 @@ from . import views
 
 
 urlpatterns = [
+    path('routes', views.getRoutes, name='routes'),
     path('mails/<int:pk>', views.mailings, name='info'),
     path('mails/full', views.full_info, name='info-full'),
     path('clients/', views.clients, name='clients'),
